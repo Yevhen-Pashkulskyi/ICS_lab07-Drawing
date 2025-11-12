@@ -5,33 +5,6 @@ import java.io.*;
 import java.util.*;
 
 public class AppDrawing extends JPanel {
-    JFrame frame;
-    JPanel panel;
-    JButton button;
-    JButton button2;
-    JLabel label;
-    JLabel label2;
-
-    AppDrawing() {
-        frame = new JFrame("Drawing");
-        frame.setSize(400, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        panel = new JPanel();
-        button = new JButton("Draw_button_1");
-        button2 = new JButton("Draw_button_2");
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                label.setText(printTask());
-            }
-        });
-        label2 = new JLabel("Label2");
-        frame.add(panel);
-        panel.add(button);
-        panel.add(button2);
-        label = new JLabel();
-        panel.add(label);
-        frame.setVisible(true);
-    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -41,11 +14,33 @@ public class AppDrawing extends JPanel {
         });
     }
 
+    AppDrawing() {
+        JFrame frame = new JFrame("Креслення");
+        frame.setSize(400, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel panel = new JPanel();
+
+        JButton buttonTask = new JButton("Завдання");
+        JButton button2 = new JButton("Кнопка");
+        JLabel label = new JLabel();
+        buttonTask.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                label.setText(printTask());
+            }
+        });
+
+        frame.add(panel);
+        panel.add(buttonTask);
+        panel.add(button2);
+        panel.add(label);
+
+        frame.setVisible(true);
+    }
+
     private String printTask() {
         String path = "INFO/task.txt";
         StringBuilder sb = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-
             String line;
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append("\n");
