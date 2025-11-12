@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
 import java.util.*;
 
 public class AppDrawing extends JPanel {
@@ -18,11 +19,17 @@ public class AppDrawing extends JPanel {
         panel = new JPanel();
         button = new JButton("Draw_button_1");
         button2 = new JButton("Draw_button_2");
-        label = new JLabel("Завдання");
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                label.setText(printTask());
+            }
+        });
         label2 = new JLabel("Label2");
         frame.add(panel);
         panel.add(button);
         panel.add(button2);
+        label = new JLabel();
+        panel.add(label);
         frame.setVisible(true);
     }
 
@@ -32,6 +39,22 @@ public class AppDrawing extends JPanel {
                 new AppDrawing();
             }
         });
+    }
+
+    private String printTask() {
+        String path = "INFO/task.txt";
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            return sb.toString();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }
