@@ -13,14 +13,6 @@ public class AppDrawing extends JPanel {
     private JPanel mainPanel;
     private JTextArea textArea;
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new AppDrawing();
-            }
-        });
-    }
-
     AppDrawing() {
         JFrame frame = new JFrame("Креслення");
         frame.setLayout(new FlowLayout());
@@ -108,5 +100,6 @@ public class AppDrawing extends JPanel {
             return "В полях повинні бути тільки числа";
         }
     }
+
 
 }
