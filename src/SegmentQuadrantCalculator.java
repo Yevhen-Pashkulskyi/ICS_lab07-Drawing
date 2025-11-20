@@ -193,8 +193,8 @@ public class SegmentQuadrantCalculator extends JPanel {
         // Осі
         g.setColor(Color.BLACK);
         g.setStroke(new BasicStroke(2));
-        g.drawLine(30, cy, w - 30, cy);
-        g.drawLine(cx, 30, cx, h - 30);
+        g.drawLine(10, cy, w - 10, cy);
+        g.drawLine(cx, 10, cx, h - 10);
         g.drawString("X", w - 40, cy + 15);
         g.drawString("Y", cx + 5, 40);
 
