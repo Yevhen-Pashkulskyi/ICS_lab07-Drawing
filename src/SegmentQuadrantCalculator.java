@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +9,7 @@ public class SegmentQuadrantCalculator extends JPanel {
     private JTextField x1Field, y1Field, x2Field, y2Field;
     private JLabel resultLabel, taskLabel;
     private JPanel graphPanel;
-    private static final int MAX_COORD = 15; // Максимальна координата на графіку
+    private static final int MAX_COORD = 12; // Максимальна координата на графіку
 
     public SegmentQuadrantCalculator() {
         setLayout(new BorderLayout(10, 10));
@@ -28,7 +26,7 @@ public class SegmentQuadrantCalculator extends JPanel {
                 drawGraph((Graphics2D) g);
             }
         };
-        graphPanel.setPreferredSize(new Dimension(450, 450));
+        graphPanel.setPreferredSize(new Dimension(400, 400));
         graphPanel.setBorder(BorderFactory.createTitledBorder("Координатна площина"));
         add(graphPanel, BorderLayout.CENTER);
 
@@ -262,7 +260,7 @@ public class SegmentQuadrantCalculator extends JPanel {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.add(new SegmentQuadrantCalculator());
             frame.pack();
-            frame.setMinimumSize(new Dimension(700, 950));
+            frame.setMinimumSize(new Dimension(630, 950));
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
