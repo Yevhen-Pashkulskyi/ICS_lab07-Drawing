@@ -51,26 +51,28 @@ public class SegmentQuadrantCalculator extends JPanel {
         gbc.insets = new Insets(5, 5, 5, 5);
 
         // Поля вводу
-        gbc.gridx = 0; gbc.gridy = 0;
-        inputPanel.add(new JLabel("X₁:"), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        inputPanel.add(new JLabel("X₁ :"), gbc);
         x1Field = new JTextField("3", 6);
         gbc.gridx = 1;
         inputPanel.add(x1Field, gbc);
 
         gbc.gridx = 2;
-        inputPanel.add(new JLabel("Y₁:"), gbc);
+        inputPanel.add(new JLabel("Y₁ :"), gbc);
         y1Field = new JTextField("4", 6);
         gbc.gridx = 3;
         inputPanel.add(y1Field, gbc);
 
-        gbc.gridx = 0; gbc.gridy = 1;
-        inputPanel.add(new JLabel("X₂:"), gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        inputPanel.add(new JLabel("X₂ :"), gbc);
         x2Field = new JTextField("-2", 6);
         gbc.gridx = 1;
         inputPanel.add(x2Field, gbc);
 
         gbc.gridx = 2;
-        inputPanel.add(new JLabel("Y₂:"), gbc);
+        inputPanel.add(new JLabel("Y₂ :"), gbc);
         y2Field = new JTextField("5", 6);
         gbc.gridx = 3;
         inputPanel.add(y2Field, gbc);
@@ -90,7 +92,7 @@ public class SegmentQuadrantCalculator extends JPanel {
         return inputPanel;
     }
 
-    // Окремий метод для читання завдання з файлу
+    // Метод для читання завдання з файлу
     private void showTaskFromFile() {
         String content = readTaskFromFile();
         if (content != null) {
@@ -167,6 +169,7 @@ public class SegmentQuadrantCalculator extends JPanel {
         return sb.toString();
     }
 
+    // Метод для перевірки точки в якому квадранті вона знаходиться
     private String getQuadrantName(double x, double y) {
         if (x > 0 && y > 0) return "I";
         if (x < 0 && y > 0) return "II";
@@ -175,6 +178,7 @@ public class SegmentQuadrantCalculator extends JPanel {
         return "На осі";
     }
 
+    // Метод для форматування значення в строку
     private String format(double d) {
         return d == (int)d ? String.valueOf((int)d) : String.format("%.1f", d);
     }
@@ -258,7 +262,7 @@ public class SegmentQuadrantCalculator extends JPanel {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.add(new SegmentQuadrantCalculator());
             frame.pack();
-            frame.setMinimumSize(new Dimension(700, 700));
+            frame.setMinimumSize(new Dimension(700, 950));
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
